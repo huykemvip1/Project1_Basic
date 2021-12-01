@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Project</title>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" text="text/css" th:href="@{/css/style.css}"></link>
+</head>
+<body>
+<h1>Total number of accounts</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">User Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list,state : ${accounts}">
+        <th th:text="${state.index}+1" scope="row"></th>
+        <td th:text="${list}"></td>
+        <td><a th:href="@{'/list/'+${list}}"><button type="submit">Edit</button></a></td>
+        <td><a th:href="@{'/list/delete/'+${list}}"><button type="submit">Delete</button></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
